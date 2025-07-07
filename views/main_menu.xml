@@ -1,0 +1,14 @@
+<odoo>
+<menuitem
+    id="main_menu"
+    name="Real Estate"
+    />
+    <menuitem
+        id="properties"
+        name="Properties"
+       parent="main_menu"/>
+
+
+
+
+</odoo>
