@@ -1,0 +1,32 @@
+<odoo>
+     <record id="action_estate_report_wizard" model="ir.actions.act_window">
+        <field name="name">Estate Report</field>
+        <field name="res_model">estate.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="estate_report_wizard_form" model="ir.ui.view">
+        <field name="name">estate.report.wizard.form</field>
+        <field name="model">estate.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Select Estates to Print">
+                <group>
+                    <field name="estate_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="Print Report" type="object" name="print_report" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+   
+
+    <menuitem id="menu_estate_report_wizard"
+              name="Estate Report"
+              parent="reports_action_menu" 
+              action="action_estate_report_wizard"
+              sequence="10"/>
+</odoo>

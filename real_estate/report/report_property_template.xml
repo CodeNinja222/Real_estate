@@ -1,0 +1,133 @@
+<odoo>
+    <template id="report_property_document">
+        <t t-foreach="docs" t-as="property">
+            <t t-call="web.external_layout">
+                <style>
+                    @media print {
+                        .property-page {
+                            page-break-after: always !important;
+                            break-after: page !important;
+                            margin-bottom: 0 !important;
+                        }
+                        .property-page:last-child {
+                            page-break-after: avoid !important;
+                            break-after: avoid !important;
+                        }
+                    }
+                    .property-page {
+                        margin-bottom: 20px;
+                    }
+                    .property-container {
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        padding: 25px;
+                        background: #ffffff;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                    }
+                    .property-header {
+                        color: #2c3e50;
+                        text-align: center;
+                        font-size: 24px;
+                        margin-bottom: 25px;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #eee;
+                    }
+                    .property-info {
+                        font-size: 15px;
+                        line-height: 1.6;
+                        margin-bottom: 20px;
+                    }
+                    .property-info p {
+                        margin-bottom: 8px;
+                    }
+                    .section-title {
+                        margin-top: 25px;
+                        color: #34495e;
+                        font-size: 18px;
+                        padding-bottom: 5px;
+                        border-bottom: 1px solid #eee;
+                    }
+                    .table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 15px;
+                        margin-bottom: 20px;
+                    }
+                    .table th {
+                        background-color: #f8f9fa;
+                        border: 1px solid #dee2e6;
+                        padding: 10px;
+                        text-align: left;
+                        font-weight: 600;
+                    }
+                    .table td {
+                        border: 1px solid #dee2e6;
+                        padding: 8px 10px;
+                    }
+                </style>
+
+                <main class="property-page">
+                    <div class="property-container">
+                        <h2 class="property-header">Property Report</h2>
+
+                        <div class="property-info">
+                            <p><strong>Name:</strong> <span t-field="property.name"/></p>
+                            <p><strong>Price:</strong> <span t-field="property.selling_price"/></p>
+                            <p><strong>Status:</strong> <span t-field="property.status"/></p>
+                            <p><strong>Buyer:</strong> <span t-field="property.buyer_id.name"/></p>
+                            <p><strong>Owner:</strong> <span t-field="property.owner_id.name"/></p>
+                        </div>
+
+                        <t t-if="property.details_ids">
+                            <h3 class="section-title">Property Details</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Detail</th>
+                                        <th>Count</th>
+                                        <th>Remark</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="property.details_ids" t-as="p">
+                                        <tr>
+                                            <td><t t-esc="p.detail_id.name"/></td>
+                                            <td><t t-esc="p.count"/></td>
+                                            <td><t t-esc="p.remark"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <t t-if="property.offer_ids">
+                            <h3 class="section-title">Offers</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Price</th>
+                                        <th>Partner</th>
+                                        <th>Deadline</th>
+                                        <th>Validity Days</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="property.offer_ids" t-as="p">
+                                        <tr>
+                                            <td><t t-esc="p.price"/></td>
+                                            <td><t t-esc="p.partner_id.name"/></td>
+                                            <td><t t-esc="p.deadline"/></td>
+                                            <td><t t-esc="p.validity_days"/></td>
+                                            <td><t t-esc="p.status"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+</odoo>

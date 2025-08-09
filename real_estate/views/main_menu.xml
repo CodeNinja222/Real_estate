@@ -1,0 +1,26 @@
+<odoo>
+<menuitem
+    id="main_menu"
+    name="Real Estate"
+    sequence="10"
+    />
+    <menuitem
+        id="properties"
+        name="Advertisements"
+       parent="main_menu"
+       sequence="20"/>
+     <menuitem
+        id="setting"
+        name="Setting"
+       parent="main_menu"
+       sequence="30"/>
+
+      <menuitem 
+      id="reports_action_menu"
+      name="Reports" 
+      parent="main_menu"
+      sequence="40"/>
+
+
+
+</odoo>

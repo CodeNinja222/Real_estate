@@ -1,0 +1,42 @@
+<odoo>
+   
+    <record id="view_estate_property_list_in_users" model="ir.ui.view">
+        <field name="name">estate.property.list.in.users</field>
+        <field name="model">real.estate.property</field>
+        <field name="arch" type="xml">
+            <list >
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="postcode"/>
+                    <field name="garden"/>
+                    <field name="garden_area"/>
+                    <field name="tag_ids" widget="many2many_tags"  />
+                    <field name="garden_orientation"/>
+                    <field name="expected_price" optional="1"/>
+                    <field name="selling_price" optional="1"/>
+                    <field name="facades"/>
+                    <field name="garage"/>
+                    <field name="living_area"/>
+                    <field name="bedrooms"/>
+                    <field name="date_availability" optional="1"/>
+        </list>
+        </field>
+    </record>
+
+
+   <record id="view_users_form_inherit_property_ids" model="ir.ui.view">
+    <field name="name">res.users.form.inherit.property.ids</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+            <page string="Real estate Properties">
+                <field name="property_ids"
+                       mode="list"
+                       list_view_ref="view_estate_property_list_in_users"
+                       />
+            </page>
+        </xpath>
+    </field>
+</record>
+</odoo>
