@@ -13,9 +13,12 @@
             <form string="Select Estates to Print">
                 <group>
                     <field name="estate_ids" widget="many2many_tags"/>
+                    <field name="from_date" />
+                    <field name="to_date" />
                 </group>
                 <footer>
                     <button string="Print Report" type="object" name="print_report" class="btn-primary"/>
+                     <button name="action_export_excel" type="object" string="Export to Excel" class="btn-secondary"/>
                     <button string="Cancel" special="cancel"/>
                 </footer>
             </form>

@@ -6,3 +6,4 @@ from . import model_ResUsers
 from . import model_details
 from . import model_detail_type
 from . import estate_report_wizard
+from . import report_abstract_model

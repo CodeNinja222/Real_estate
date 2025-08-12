@@ -132,7 +132,7 @@ class Property(models.Model):
                 raise UserError(f"You cannot delete a property in state '{record.status}'. Only 'New' or 'Cancelled' properties are allowed.")
             
     def print_property_report(self):
-          return self.env.ref('real_estate.action_property_report').report_action(self)
+        return self.env.ref('real_estate.action_property_report').report_action(self)
     
     @api.constrains("buyer_id","owner_id")
     def check_owner_buyer_validity(self):
