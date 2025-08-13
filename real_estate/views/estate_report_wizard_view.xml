@@ -13,6 +13,7 @@
             <form string="Select Estates to Print">
                 <group>
                     <field name="estate_ids" widget="many2many_tags"/>
+                    <field name="salesman_id"/>
                     <field name="from_date" />
                     <field name="to_date" />
                 </group>

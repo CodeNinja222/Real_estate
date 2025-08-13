@@ -75,11 +75,11 @@
         }
       </style>
       
-      <!-- Set criteria once -->
+      
       <t t-set="criteria" t-value="data.get('criteria', {}) if data else {}"/>
       
       <main class="property-page">
-        <!-- Show criteria info once, before all properties -->
+       
         <t t-if="criteria">
           <div class="criteria-info">
             <t t-if="criteria.get('estate_names')">
@@ -88,10 +88,13 @@
             <t t-if="criteria.get('date_range') and not criteria.get('estate_names')">
               <p><strong>Date Range:</strong> <t t-esc="criteria['date_range']"/></p>
             </t>
+              <t t-if="criteria.get('salesman') and not criteria.get('estate_names')">
+              <p><strong>Sales person:</strong> <t t-esc="criteria['salesman']"/></p>
+            </t>
           </div>
         </t>
         
-        <!-- Loop over docs, each property on its own page -->
+        
        
           <div class="property-page">
             <div class="property-container">
